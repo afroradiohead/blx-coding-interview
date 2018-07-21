@@ -1,6 +1,10 @@
 {
   "name": "blx-coding-exercise",
   "version": "0.0.0",
+  "engines": {
+    "node": "8.10.0",
+    "npm": "5.8.x"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

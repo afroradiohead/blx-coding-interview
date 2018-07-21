@@ -1,0 +1,61 @@
+<header class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand mr-2 mr-md-0" routerlink="/" href="#/">
+    BLX Coding Exercise
+  </a>
+</header>
+<div class="container">
+  <form (submit)="onFormSubmit()">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Analysis Date</label>
+
+          <p-calendar [formControl]="formGroup.controls['analysisDate']" ></p-calendar>
+        </div>
+        <div>
+          Discount Rate
+          <div class="input-group mb-3">
+            <input max="100" min="0" step="1" type="number" class="form-control" [formControl]="formGroup.controls['discountRate']" />
+            <div class="input-group-append">
+              <span class="input-group-text" id="basic-addon2">%</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          Cash flows
+          <hot-table
+            [data]="inputCashflowList"
+            [startRows]="2"
+            [maxCols]="2"
+            [minSpareRows]="1"
+            [colHeaders]="true"
+            [rowHeaders]="false">
+            <hot-column data="date" title="Date"></hot-column>
+            <hot-column data="amount" title="Amount"></hot-column>
+          </hot-table>
+        </div>
+        <div>
+          <button>Calculate NPV</button>
+        </div>
+      </div>
+      <div class="col-md-6 offset-md-3">
+        <table class="table table-striped">
+          <tr>
+            <th>Date</th>
+            <th>Cash Flow</th>
+            <th>PV</th>
+          </tr>
+          <tr *ngFor="let cashFlow of outputCashflowList">
+            <td>{{cashFlow.date | date:'MM/dd/yyyy'}}</td>
+            <td>{{cashFlow.amount | blxCurrency}}</td>
+            <td>{{cashFlow.PV | blxCurrency}}</td>
+          </tr>
+        </table>
+        <div class="text-right" *ngIf="netPV">
+          <strong>NPV</strong> <span>{{netPV | blxCurrency}}</span>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import * as moment from 'moment';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import * as _ from 'lodash';
@@ -11,7 +11,6 @@ interface IInputCashflow {
 interface IOutputCashflow extends IInputCashflow {
   PV: string;
 }
-
 
 @Component({
   selector: 'app-root',
@@ -41,8 +40,6 @@ export class AppComponent {
     discountRate: new FormControl(5, [Validators.max(100)]),
     analysisDate: new FormControl(moment('4/1/2018').toDate())
   });
-
-
 
   onFormSubmit() {
     this.outputCashflowList = this.inputCashflowList

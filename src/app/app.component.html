@@ -21,8 +21,8 @@
 
           <p-calendar [formControl]="formGroup.controls['analysisDate']" ></p-calendar>
         </div>
-        <div>
-          Discount Rate
+        <div class="form-group">
+          <label>Discount Rate</label>
           <div class="input-group mb-3">
             <input max="100" min="0" step="1" type="number" class="form-control" [formControl]="formGroup.controls['discountRate']" />
             <div class="input-group-append">
@@ -30,8 +30,8 @@
             </div>
           </div>
         </div>
-        <div>
-          Cash flows
+        <div class="form-group">
+          <label>Cash flows</label>
           <hot-table
             [data]="inputCashflowList"
             [startRows]="2"
@@ -44,7 +44,7 @@
           </hot-table>
         </div>
         <div>
-          <button>Calculate NPV</button>
+          <button class="btn btn-primary">Calculate NPV</button>
         </div>
       </div>
       <div class="col-md-6 offset-md-3">
